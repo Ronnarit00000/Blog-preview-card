@@ -1,0 +1,186 @@
+:root {
+    /* Color */
+    --clr-yellow:hsl(47, 88%, 63%);
+    --clr-gray-950:hsl(0, 0%, 7%);
+    --clr-gray-500:hsl(0, 0%, 42%);
+    --clr-white:hsl(0, 0%, 100%);
+
+    --clr-base:hsl(0, 0%, 42%);
+    --clr-active:hsl(47, 88%, 63%);
+    --clr-error:hsl(47, 88%, 63%);
+    --clr-hover:hsl(47, 88%, 63%);
+
+    /* Typography */
+    /* family:  Figtree*/
+    --ff-Figtree:"Figtree", sans-serif;
+
+    /* clamp font-size on viewport width 400px - 1440px */
+    --fs-700: clamp(1.25rem, 1.1538rem + 0.3846vw, 1.5rem);   /*20px - 24px*/
+    --fs-400: clamp(0.875rem, 0.8269rem + 0.1923vw, 1rem);    /*14px - 16px*/
+    --fs-300: clamp(0.75rem, 0.7019rem + 0.1923vw, 0.875rem); /*12px - 14px*/ 
+
+    /* font-weight 800, 500 */ 
+    --fw-extra-blod:800;
+    --fw-medium:500;
+}
+
+/* set box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* reset margin */
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+body {
+    margin: 0;
+}
+
+/* set default style image */
+img,
+picture {
+    display: block;
+    width: 100%;
+}
+
+body {
+    /* use font-family :  Figtree*/
+    /* set line-height : 1.5 */
+    font-family: var(--ff-Figtree);
+    line-height: 1.5;
+
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    background-color: var(--clr-yellow);
+}
+
+.container {
+    width: min(100% - 1.5rem, 1200px);
+    margin-inline: auto;
+    margin-block: 1rem;
+}
+
+.row {
+    display: flex;   
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.row:is(.mx-auto){
+    justify-content: center;
+}
+
+.card {
+    width:  20.4375rem; /*327px*/
+    height: 31.3125rem; /*501px*/
+    border-radius: 1.25rem; /*20px*/
+    background-color: var(--clr-white);
+    border: 2px solid var(--clr-gray-950);
+    box-shadow: 10px 10px var(--clr-gray-950);
+    padding-inline: 1.5rem;
+    padding-block:  1.5rem;
+}
+
+.card .card__img {
+    height: 12.5rem; /*fixed image height : 200px*/
+    border-radius: 0.625rem; /*10px*/
+    object-fit:cover;
+}
+
+.card .card__descriptions {
+    margin-block-start: 1.5rem;  /* spacing : 24px */
+}
+
+.card .card__descriptions > * + * {
+    margin-block-start: 0.75rem; /* spacing : 12px */
+}
+
+.card .card__descriptions .status {
+    display: inline-block;
+    font-size: var(--fs-300);
+    font-weight: var(--fw-extra-blod);
+    border: 2px solid var(--clr-base);
+    border-radius: 0.25rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.25rem;
+}
+
+.card .card__descriptions .status:is(.status--active){
+    border: 2px solid var(--clr-active);
+    background-color: var(--clr-active);
+}
+
+.card .card__descriptions .status:is(.status--error){
+    border: 2px solid var(--clr-error);
+    background-color: var(--clr-error);
+}
+
+.card .card__descriptions .date{
+    font-size: var(--fs-300);
+    font-weight: var(--fw-medium);
+    color: var(--clr-gray-950);
+}
+
+.card .card__descriptions a{
+    display: inline-block;
+    text-decoration: none;
+}
+
+.card .card__descriptions .link{
+    color: var(--clr-gray-950);
+    font-size:   var(--fs-700);
+    font-weight: var(--fw-extra-blod);
+    cursor: pointer;
+}
+
+.card .card__descriptions .link:hover,
+.card .card__descriptions .link:focus{
+    color: var(--clr-hover);
+}
+
+.card .card__descriptions .link:focus {
+    background-color: transparent;
+    outline: none;   
+}
+
+
+.card .card__descriptions .body{
+    font-size:   var(--fs-400);
+    font-weight: var(--fw-medium);
+    color: var(--clr-gray-500);
+}
+
+.card .card__avatar {
+    margin-block-start: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card .card__avatar .profile{
+    width: 2rem; /*fixed image width*/
+    height:2rem; /*fixed image height*/
+    object-fit: scale-down;
+}
+
+.card .card__avatar .name {
+    font-size:   var(--fs-300);
+    font-weight: var(--fw-extra-blod);
+}
+
+/* for viewport width >= 650px card width: 384px height: 522px  */
+@media (min-width: 650px) {
+    .card {
+        width:     24rem;
+        height:32.625rem;
+    }
+}
+
+
